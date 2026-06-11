@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>議事録：半導体メモリ破断面観察の業務背景調査</title>
+    <style>
+      :root {
+        --ink: #17202a;
+        --muted: #5f6b7a;
+        --line: #d9e1e8;
+        --paper: #ffffff;
+        --soft: #f5f8fb;
+        --accent: #176b87;
+        --accent-soft: #e7f4f7;
+        --warn-soft: #fff7e6;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: #eef3f7;
+        font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans",
+          "Yu Gothic", "YuGothic", "Segoe UI", sans-serif;
+        line-height: 1.75;
+      }
+
+      main {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 40px 20px 64px;
+      }
+
+      article {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        box-shadow: 0 18px 40px rgba(34, 48, 64, 0.08);
+        overflow: hidden;
+      }
+
+      header {
+        padding: 40px 44px 32px;
+        background: linear-gradient(135deg, #f8fbfd 0%, #eaf5f8 100%);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .eyebrow {
+        margin: 0 0 8px;
+        color: var(--accent);
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3 {
+        line-height: 1.35;
+      }
+
+      h1 {
+        margin: 0 0 16px;
+        font-size: 30px;
+      }
+
+      h2 {
+        margin: 0 0 16px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--accent-soft);
+        font-size: 22px;
+      }
+
+      h3 {
+        margin: 24px 0 8px;
+        font-size: 17px;
+      }
+
+      p {
+        margin: 0 0 14px;
+      }
+
+      ul,
+      ol {
+        margin: 0 0 18px 1.4em;
+        padding: 0;
+      }
+
+      li {
+        margin: 4px 0;
+      }
+
+      section {
+        padding: 32px 44px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      section:last-child {
+        border-bottom: 0;
+      }
+
+      .meta {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px 18px;
+        margin-top: 20px;
+        padding: 16px;
+        background: rgba(255, 255, 255, 0.72);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+      }
+
+      .meta div {
+        min-width: 0;
+      }
+
+      .meta b {
+        display: block;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .callout {
+        margin: 18px 0;
+        padding: 16px 18px;
+        background: var(--accent-soft);
+        border-left: 5px solid var(--accent);
+        border-radius: 8px;
+      }
+
+      .note {
+        background: var(--warn-soft);
+        border-left-color: #c5841c;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 16px;
+      }
+
+      .card {
+        padding: 16px;
+        background: var(--soft);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+      }
+
+      .card h3 {
+        margin-top: 0;
+      }
+
+      table {
+        width: 100%;
+        margin: 16px 0 22px;
+        border-collapse: collapse;
+        font-size: 14px;
+      }
+
+      th,
+      td {
+        padding: 10px 12px;
+        border: 1px solid var(--line);
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th {
+        background: var(--soft);
+      }
+
+      .lp-copy {
+        padding: 18px;
+        background: #fbfdff;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+      }
+
+      .lp-copy h3 {
+        margin-top: 0;
+      }
+
+      a {
+        color: #0a5f7c;
+        word-break: break-all;
+      }
+
+      .sources li {
+        margin-bottom: 8px;
+      }
+
+      @media (max-width: 760px) {
+        main {
+          padding: 20px 12px 40px;
+        }
+
+        header,
+        section {
+          padding: 26px 20px;
+        }
+
+        h1 {
+          font-size: 24px;
+        }
+
+        .meta,
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <article>
+        <header>
+          <p class="eyebrow">Meeting Note / Research Summary</p>
+          <h1>半導体メモリ破断面観察の業務背景調査</h1>
+          <p>
+            就職活動用ポートフォリオLPの冒頭に入れるため、「そもそも何の工程を効率化したのか」を非エンジニアにも伝わる形で整理した議事録。
+          </p>
+          <div class="meta">
+            <div>
+              <b>作成日</b>
+              2026年5月29日
+            </div>
+            <div>
+              <b>用途</b>
+              README・LP冒頭の業務背景説明
+            </div>
+            <div>
+              <b>対象読者</b>
+              採用担当者、非エンジニア、技術職面接官
+            </div>
+            <div>
+              <b>注意</b>
+              会社名・製品名・内部構造・機密情報は扱わない
+            </div>
+          </div>
+        </header>
+
+        <section>
+          <h2>今回の論点</h2>
+          <p>
+            現在のLPは「3〜4時間を約45分へ短縮した」という成果は伝わる一方で、前提となる検査工程の説明が少ない。そのため、読者が「何を記録する作業だったのか」「なぜ正確なExcel管理が必要だったのか」を理解しにくい。
+          </p>
+          <div class="callout">
+            <p>
+              LPでは、半導体製造全体を詳しく説明するのではなく、「薄く小さいチップは切り出し・取り扱い時に割れや欠けが問題になるため、位置・方向・測定値を正しく記録する必要がある」という流れに絞る。
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <h2>前提整理</h2>
+          <div class="grid">
+            <div class="card">
+              <h3>ウェハとは</h3>
+              <p>
+                半導体材料でできた薄い円盤状の基板。表面に同じような集積回路を多数作り込む。
+              </p>
+            </div>
+            <div class="card">
+              <h3>ウェハ上のチップとは</h3>
+              <p>
+                ウェハ上に並ぶ小さな回路単位。工程後に切り出され、個別の部品として扱われる。
+              </p>
+            </div>
+            <div class="card">
+              <h3>切り出し工程とは</h3>
+              <p>
+                チップとチップの境界をブレードやレーザーなどで分割し、個片化する工程。
+              </p>
+            </div>
+          </div>
+          <p>
+            切り出し後のチップは、装置でピックアップされ、検査や後工程へ進む。この前後で、チップの欠け・割れ・応力による影響が品質上の問題になり得る。
+          </p>
+        </section>
+
+        <section>
+          <h2>なぜ破断・割れやすさを見るのか</h2>
+          <p>
+            半導体メモリのチップは薄く小さいため、切断時や装置での取り扱い時に、端面の欠け、微小なクラック、応力の影響を受けることがある。これらは後工程の不良や信頼性低下につながる可能性がある。
+          </p>
+          <p>
+            そのため、評価用サンプルに一定の力をかけ、破断時の測定値や破断方向、破断面の状態を記録する。目的は、原因を断定することではなく、「どの位置のチップが弱い傾向にあるか」「どの方向の力に弱い傾向があるか」を把握すること。
+          </p>
+        </section>
+
+        <section>
+          <h2>記録項目と意味</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>記録項目</th>
+                <th>意味</th>
+                <th>分析でわかること</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>測定値</td>
+                <td>破断時の力や距離など、強度を示す数値</td>
+                <td>サンプルごとの強度差、ばらつき</td>
+              </tr>
+              <tr>
+                <td>破断方向</td>
+                <td>どの向きに力をかけたか</td>
+                <td>方向による弱さの傾向</td>
+              </tr>
+              <tr>
+                <td>ウェハ上の位置</td>
+                <td>Top Edge、Centerなど、サンプルが取れた場所</td>
+                <td>外周・中央など位置による傾向</td>
+              </tr>
+              <tr>
+                <td>推定破断点</td>
+                <td>破断面観察から推定した割れの起点</td>
+                <td>どこから割れ始めた可能性があるか</td>
+              </tr>
+              <tr>
+                <td>破断点からの距離</td>
+                <td>観察した特徴と起点の位置関係</td>
+                <td>破断の進み方や分類の手がかり</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>
+            これらを組み合わせて見ることで、単発の測定値ではなく、位置・方向・破断面の特徴を含めた傾向を把握できる。
+          </p>
+        </section>
+
+        <section>
+          <h2>Excel管理が重要な理由</h2>
+          <p>
+            この工程では、測定値そのものだけでなく、「どのウェハの、どの位置の、どの番号の、どの方向のサンプルなのか」という結びつきが重要になる。1,000行規模の台帳でこの結びつきを手作業で管理すると、行ズレや入力ミスが起きやすい。
+          </p>
+          <div class="callout note">
+            <p>
+              行が1つずれるだけでも、別の位置・別の方向のサンプルとして集計される可能性がある。その結果、弱い位置や方向の傾向が誤って見え、後続のSpotfire集計や再確認作業にも手戻りが発生する。
+            </p>
+          </div>
+          <p>
+            今回の改善では、画像ファイル名に必要情報を埋め込み、Excel関数とVBAで自動抽出・自動照合する構造にした。これにより、人が台帳から正しい行を探す負担を減らし、確認すべきポイントを絞れるようにした。
+          </p>
+        </section>
+
+        <section>
+          <h2>LPに入れる説明案</h2>
+          <h3>非エンジニア向け100字</h3>
+          <div class="lp-copy">
+            <p>
+              半導体メモリのチップは、ウェハから切り出して装置で扱う途中に割れや欠けが起きることがあります。どの位置・方向で弱い傾向があるかを記録し、品質改善につなげる評価工程です。
+            </p>
+          </div>
+
+          <h3>採用担当向け300字</h3>
+          <div class="lp-copy">
+            <p>
+              半導体メモリは、円盤状のウェハ上に同じような小さなチップを多数作り、後工程で1つずつ切り出して扱います。チップは薄く小さいため、切断時や装置でのピックアップ時に、欠け・割れ・応力の影響を受けることがあります。そこで評価用サンプルに荷重をかけ、破断時の測定値、破断方向、ウェハ上の位置、破断面の状態を記録します。これにより「特定の位置のチップが弱い傾向があるか」「特定方向の力に弱い傾向があるか」を把握し、品質改善や歩留まり改善の手がかりにします。今回の改善は、この記録作業を正確かつ短時間で行うためのExcel自動化です。
+            </p>
+          </div>
+
+          <h3>LP冒頭セクション案</h3>
+          <div class="lp-copy">
+            <h3>この作業は、半導体チップの「割れやすさ」を記録する検査工程です</h3>
+            <p>
+              半導体メモリは、円盤状のウェハ上に多数の小さなチップを作り、後工程で1つずつ切り出して扱います。チップは薄く小さいため、切断や装置での取り扱いの中で、欠け・割れ・応力の影響を受けることがあります。
+            </p>
+            <p>
+              この工程では、評価用サンプルに力をかけたときの測定値や、割れた方向、ウェハ上の位置、破断面の状態を記録します。目的は「どの位置のチップが弱い傾向にあるか」「どの方向の力に弱い傾向があるか」を把握し、品質改善の手がかりにすることです。
+            </p>
+            <p>
+              そのため、記録ミスは単なる入力ミスではありません。位置や方向が1行ずれるだけで、後工程の集計結果が変わり、弱点の見え方も変わってしまいます。そこで、画像ファイル名に必要情報を持たせ、Excelで正しい行へ自動照合する仕組みを作りました。
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <h2>エンジニア向け補足</h2>
+          <p>
+            ウェハは複数のICを同時形成する薄い基板で、個々の回路領域はdie、一般にはチップと呼ばれる。ダイシングではチップ間の境界を分割し、後工程でピックアップ・検査・実装へ進む。薄型化したチップでは、ダイシング時のチッピングやクラックが強度へ影響しやすくなる。
+          </p>
+          <p>
+            破断面観察では、破断面上の特徴から破断起点や進展方向を推定することがある。ウェハ上の位置・破断方向・測定値・推定破断点をひも付けることで、個体差だけでなく、位置依存や方向依存の傾向を確認できる。ただし、LP上では原因を断定せず、「傾向を見る」「弱点を把握する」「推定する」という表現に留める。
+          </p>
+        </section>
+
+        <section>
+          <h2>LPに入れない専門メモ</h2>
+          <ul>
+            <li>「die」と「chip」は厳密には文脈差があるが、LPでは「チップ」に統一する。</li>
+            <li>ブレードダイシング、レーザーダイシング、ステルスダイシングなどの方式差は深掘りしない。</li>
+            <li>破断面上の模様や特徴から破断起点を推定できる場合があるが、LPでは詳細な解析原理には踏み込まない。</li>
+            <li>ウェハマップ上の位置差は原因候補の絞り込みに使う情報であり、単独で原因断定するものではない。</li>
+            <li>Excel管理の本質は、測定値と識別情報の結びつきを崩さないこと。</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>出典URL</h2>
+          <ul class="sources">
+            <li>
+              NIST Semiconductor Glossary:
+              <a href="https://www.nist.gov/semiconductors/semiconductor-glossary">https://www.nist.gov/semiconductors/semiconductor-glossary</a>
+            </li>
+            <li>
+              Samsung Semiconductor Glossary: Wafer:
+              <a href="https://semiconductor.samsung.com/support/tools-resources/dictionary/semiconductor-glossary-wafer/">https://semiconductor.samsung.com/support/tools-resources/dictionary/semiconductor-glossary-wafer/</a>
+            </li>
+            <li>
+              DISCO: Cutting Process Using Blades:
+              <a href="https://glass-kakou.disco.co.jp/en/solution/dicing.html">https://glass-kakou.disco.co.jp/en/solution/dicing.html</a>
+            </li>
+            <li>
+              DISCO: Dicing Thin Wafers:
+              <a href="https://www-hq.disco.co.jp/eg/solution/library/dicing/dicing_thin.html">https://www-hq.disco.co.jp/eg/solution/library/dicing/dicing_thin.html</a>
+            </li>
+            <li>
+              DISCO: Die inspection after dicing / die strength:
+              <a href="https://www.disco.co.jp/eg/news/corp/20201130.html">https://www.disco.co.jp/eg/news/corp/20201130.html</a>
+            </li>
+            <li>
+              DISCO: Laser Full Cut Dicing:
+              <a href="https://www-hq.disco.co.jp/eg/solution/library/laser/laser.html">https://www-hq.disco.co.jp/eg/solution/library/laser/laser.html</a>
+            </li>
+            <li>
+              Scientific Reports: Wafer map failure pattern classification:
+              <a href="https://www.nature.com/articles/s41598-023-34147-2">https://www.nature.com/articles/s41598-023-34147-2</a>
+            </li>
+            <li>
+              ScienceDirect: Quantitative fractography analysis of a chip crack:
+              <a href="https://www.sciencedirect.com/science/article/abs/pii/S0026271419304664">https://www.sciencedirect.com/science/article/abs/pii/S0026271419304664</a>
+            </li>
+          </ul>
+        </section>
+      </article>
+    </main>
+  </body>
+</html>

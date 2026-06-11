@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>議事録：LP業務背景の具体化と構成見直し</title>
+    <style>
+      :root {
+        --ink: #17202a;
+        --muted: #5f6b7a;
+        --line: #d9e1e8;
+        --paper: #ffffff;
+        --soft: #f5f8fb;
+        --accent: #176b87;
+        --accent-soft: #e7f4f7;
+        --warn-soft: #fff7e6;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: #eef3f7;
+        font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans",
+          "Yu Gothic", "YuGothic", "Segoe UI", sans-serif;
+        line-height: 1.75;
+      }
+
+      main {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 40px 20px 64px;
+      }
+
+      article {
+        overflow: hidden;
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        box-shadow: 0 18px 40px rgba(34, 48, 64, 0.08);
+      }
+
+      header {
+        padding: 40px 44px 32px;
+        background: linear-gradient(135deg, #f8fbfd 0%, #eaf5f8 100%);
+        border-bottom: 1px solid var(--line);
+      }
+
+      section {
+        padding: 32px 44px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      section:last-child {
+        border-bottom: 0;
+      }
+
+      h1,
+      h2,
+      h3 {
+        line-height: 1.35;
+      }
+
+      h1 {
+        margin: 0 0 16px;
+        font-size: 30px;
+      }
+
+      h2 {
+        margin: 0 0 16px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--accent-soft);
+        font-size: 22px;
+      }
+
+      h3 {
+        margin: 22px 0 8px;
+        font-size: 17px;
+      }
+
+      p {
+        margin: 0 0 14px;
+      }
+
+      ul,
+      ol {
+        margin: 0 0 18px 1.4em;
+        padding: 0;
+      }
+
+      li {
+        margin: 4px 0;
+      }
+
+      .eyebrow {
+        margin: 0 0 8px;
+        color: var(--accent);
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .meta {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px 18px;
+        margin-top: 20px;
+        padding: 16px;
+        background: rgba(255, 255, 255, 0.72);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+      }
+
+      .meta b {
+        display: block;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .callout {
+        margin: 18px 0;
+        padding: 16px 18px;
+        background: var(--accent-soft);
+        border-left: 5px solid var(--accent);
+        border-radius: 8px;
+      }
+
+      .note {
+        background: var(--warn-soft);
+        border-left-color: #c5841c;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin: 18px 0;
+      }
+
+      .card {
+        padding: 16px;
+        background: var(--soft);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+      }
+
+      .card h3 {
+        margin-top: 0;
+      }
+
+      .lp-copy {
+        padding: 18px;
+        background: #fbfdff;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+      }
+
+      code {
+        padding: 1px 5px;
+        background: var(--soft);
+        border: 1px solid var(--line);
+        border-radius: 5px;
+        font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      }
+
+      @media (max-width: 760px) {
+        main {
+          padding: 20px 12px 40px;
+        }
+
+        header,
+        section {
+          padding: 26px 20px;
+        }
+
+        h1 {
+          font-size: 24px;
+        }
+
+        .meta,
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <article>
+        <header>
+          <p class="eyebrow">Meeting Note / Revision Log</p>
+          <h1>LP業務背景の具体化と構成見直し</h1>
+          <p>
+            2026年5月30日に行った、半導体メモリ破断面観察ポートフォリオLPの背景説明見直しをまとめた議事録。
+          </p>
+          <div class="meta">
+            <div>
+              <b>作成日</b>
+              2026年5月30日
+            </div>
+            <div>
+              <b>対象</b>
+              index.html / LP業務背景セクション
+            </div>
+            <div>
+              <b>前提</b>
+              20260529議事録は前日の調査メモとして維持
+            </div>
+            <div>
+              <b>目的</b>
+              採用担当者に工程の価値と面倒さが伝わる構成へ修正
+            </div>
+          </div>
+        </header>
+
+        <section>
+          <h2>今日の結論</h2>
+          <p>
+            LP冒頭でいきなり「チップの割れやすさ」を見出しにすると、前提知識がない読者には抽象度が低すぎる。冒頭は「前職でPCやスマホに使われる半導体メモリの生産評価工程に関わっていた」という規模感から入り、その中の研究・評価業務として破断面観察を説明する。
+          </p>
+          <p>
+            ただし、1つの本文に評価内容と現場の不便さを詰め込むと長すぎる。LP上では「どういった製品を扱う工場の評価内容だったのか」と「その現場で頼まれた仕事内容と、教えられた手順の不便さ」を分けて見せる。
+          </p>
+          <div class="callout">
+            <p>
+              最終方針：半導体メモリの生産評価工程 → 特定条件のウェハ → サンプル破断面のマイクロスコープ撮影 → ウェハ箇所・破断面・抗圧力の相関傾向 → Excel記録作業の負担、という順番で説明する。
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <h2>LPセクション分割</h2>
+          <div class="grid">
+            <div class="card">
+              <h3>前半</h3>
+              <p>
+                見出しは「どういった製品を扱う工場の評価内容だったのか」。半導体メモリ、生産評価工程、ウェハ、チップという前提を説明する。
+              </p>
+            </div>
+            <div class="card">
+              <h3>後半</h3>
+              <p>
+                見出しは「その現場で頼まれた仕事内容と、教えられた手順の不便さ」。任された破断面観察記録と、2台PC・手入力・台帳探索の不便さを説明する。
+              </p>
+            </div>
+            <div class="card">
+              <h3>狙い</h3>
+              <p>
+                読者が最初に業務領域を理解し、その後に「なぜ効率化の価値があったのか」を自然に追える構成にする。
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2>業務背景の修正方針</h2>
+          <div class="grid">
+            <div class="card">
+              <h3>抽象</h3>
+              <p>
+                前職では、PCやスマホなどに使われる半導体メモリの生産評価工程に関わっていた。
+              </p>
+            </div>
+            <div class="card">
+              <h3>評価内容</h3>
+              <p>
+                特定条件（材質など）のウェハから取ったサンプルチップに力をかけ、割れやすさを確認する。
+              </p>
+            </div>
+            <div class="card">
+              <h3>研究目的</h3>
+              <p>
+                ウェハ上の箇所、破断面、抗圧力の相関傾向を把握し、品質改善や工程条件見直しの手がかりにする。
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2>現場制約の整理</h2>
+          <p>
+            作業環境は3台構成ではなく、実態としては2台構成に近い。
+          </p>
+          <ul>
+            <li>① 測定・画像撮影PC：測定器の数値を確認し、画像名を入力してマイクロスコープ撮影する。</li>
+            <li>② Excel台帳・集計PC：Excel台帳へ数値を入力し、後で集計・発表にも使う。</li>
+          </ul>
+          <p>
+            測定機からExcel台帳へ直接データ連携できないため、1サンプルごとに①で数値確認・画像名入力・撮影を行い、②へ同じ測定値を手入力する必要があった。この切り替えが数十サンプル分続き、スイッチングコストと確認負担が大きかった。
+          </p>
+        </section>
+
+        <section>
+          <h2>本当のボトルネック</h2>
+          <p>
+            重要なのは、単に「測定値を手入力していた」ことではない。事前に数千行規模の破断テスト台帳からピックアップされた数十行について、正しい箇所のセルを探し、間違えない測定値を入力する工程もすべて手動だったこと。
+          </p>
+          <div class="callout note">
+            <p>
+              採用担当者に伝えるべき価値は、「入力を少し速くした」ではなく、「直接連携できない測定データを、数千行規模の台帳の正しいセルへ結びつける作業を仕組み化した」こと。
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <h2>改善後の仕組み</h2>
+          <ol>
+            <li>①の測定・画像撮影PCで、画像名に略号データを入力して保存する。</li>
+            <li>撮影画像を1つのフォルダにまとめる。</li>
+            <li>VBAでフォルダ内のファイル名をすべて取得し、<code>filelist</code>シートのA列へ上から下へ一覧化する。</li>
+            <li><code>貼り付け場所変換</code>シートで、文字位置とIF分岐により必要項目を抽出する。</li>
+            <li>抽出した情報をキーにして、Excel台帳の正しい行へ照合・転記する。</li>
+          </ol>
+        </section>
+
+        <section>
+          <h2>LPへ反映した見出し案</h2>
+          <div class="lp-copy">
+            <h3>前職で携わったのは、半導体メモリの生産評価工程です</h3>
+            <p>
+              前職では、PCやスマホなどに使われる半導体メモリの生産評価工程に関わっていました。ここで扱うのは、製品そのものの紹介ではなく、製造条件や材料条件によってチップの強度にどのような傾向が出るかを確認する評価業務です。
+            </p>
+            <p>
+              この評価では、特定条件（材質など）のウェハから取ったサンプルチップに力をかけ、割れやすさを確認します。破断後はサンプルの破断面をマイクロスコープで撮影し、ウェハ上の箇所、破断面の状態、破断時の抗圧力を記録します。
+            </p>
+            <p>
+              目的は単品の合否を決めることではなく、ウェハの箇所、材料条件、破断面、抗圧力の相関傾向を把握することです。
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <h2>今後の確認ポイント</h2>
+          <ul>
+            <li>「抗圧力」という表現をLPでそのまま使うか、採用担当者向けに「破断時の力」に言い換えるか。</li>
+            <li>「材質など」の条件をどこまで公開用に一般化するか。</li>
+            <li><code>filelist</code>と<code>貼り付け場所変換</code>のシート名をLPに出すか、README側に寄せるか。</li>
+            <li>「研究工程」「評価工程」「検査工程」のどの語が最も自然に伝わるか。</li>
+          </ul>
+        </section>
+      </article>
+    </main>
+  </body>
+</html>
