@@ -1,0 +1,231 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1000" width="1200" height="1000" role="img" aria-label="なぜALカットバリを検査するのか。ウェハ切断からバリ発生、ワイヤボンディング干渉、不良品化までの因果関係図">
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#57606A"/>
+    </marker>
+    <marker id="ahr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#CF222E"/>
+    </marker>
+    <marker id="dim" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#BF8700"/>
+    </marker>
+    <linearGradient id="waferGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#EDF1F4"/>
+      <stop offset="22%"  stop-color="#AEB8C2"/>
+      <stop offset="46%"  stop-color="#F4F6F8"/>
+      <stop offset="74%"  stop-color="#97A3AF"/>
+      <stop offset="100%" stop-color="#C6CDD4"/>
+    </linearGradient>
+    <linearGradient id="deviceGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#F3CB5C"/>
+      <stop offset="55%"  stop-color="#DBA21C"/>
+      <stop offset="100%" stop-color="#B67F06"/>
+    </linearGradient>
+    <linearGradient id="tapeGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#3D8AD1"/>
+      <stop offset="100%" stop-color="#2A6FB0"/>
+    </linearGradient>
+    <radialGradient id="bladeGrad" cx="38%" cy="34%" r="72%">
+      <stop offset="0%"   stop-color="#FAFBFC"/>
+      <stop offset="46%"  stop-color="#C6CDD4"/>
+      <stop offset="82%"  stop-color="#98A2AC"/>
+      <stop offset="100%" stop-color="#727C86"/>
+    </radialGradient>
+    <radialGradient id="waferTop" cx="40%" cy="34%" r="76%">
+      <stop offset="0%"   stop-color="#F4F8FB"/>
+      <stop offset="60%"  stop-color="#DCE6EF"/>
+      <stop offset="100%" stop-color="#BCCBDA"/>
+    </radialGradient>
+    <clipPath id="waferClip"><circle cx="212" cy="220" r="50"/></clipPath>
+  </defs>
+  <style>
+    text{font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo","Noto Sans JP",-apple-system,"Segoe UI",sans-serif}
+    .t1{font-size:28px;font-weight:700;fill:#1F2328}
+    .t2{font-size:16px;fill:#57606A}
+    .h{font-size:17px;font-weight:700;fill:#1F2328}
+    .b{font-size:14px;fill:#1F2328}
+    .s{font-size:13px;fill:#57606A}
+    .cap{font-size:13.5px;fill:#57606A}
+    .tag{font-size:10.5px;fill:#57606A}
+    .lyr{font-size:12px;fill:#1F2328}
+    .num{font-size:14px;font-weight:700;fill:#FFFFFF}
+    .warn{font-size:13px;font-weight:700;fill:#BF8700}
+    .bad{font-size:14px;fill:#1F2328}
+    .panel{fill:#F6F8FA;stroke:#D0D7DE;stroke-width:1.5;rx:10}
+    .frame{fill:#FFFFFF;stroke:#3A3F45;stroke-width:1.5}
+    .burr{fill:none;stroke:#BF8700;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+    .burrS{fill:none;stroke:#BF8700;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+    .lead{stroke:#8C959F;stroke-width:1}
+  </style>
+
+  <rect x="0" y="0" width="1200" height="1000" fill="#FFFFFF"/>
+
+  <text class="t1" x="40" y="38">なぜ AL カットバリを検査するのか</text>
+  <text class="t2" x="40" y="66">ウェハ切断 → バリ発生 → ワイヤボンディングで干渉 → 不良品。この因果関係が検査の理由です。</text>
+
+  <!-- ================= Row A ================= -->
+
+  <!-- Panel 1 : wafer on ring frame -->
+  <rect class="panel" x="40" y="90" width="344" height="230"/>
+  <circle cx="66" cy="118" r="13" fill="#0969DA"/><text class="num" x="66" y="123" text-anchor="middle">1</text>
+  <text class="h" x="88" y="124">円形の半導体ウェハ</text>
+
+  <circle cx="212" cy="220" r="68" fill="none" stroke="#4A90D9" stroke-width="10"/>
+  <circle cx="212" cy="220" r="62" fill="#DCEBFA" stroke="#9CC2E8" stroke-width="1"/>
+  <circle cx="212" cy="220" r="50" fill="url(#waferTop)"/>
+  <g clip-path="url(#waferClip)" stroke="#8FB4D9" stroke-width="1.2" opacity="0.85">
+    <line x1="164" y1="170" x2="164" y2="270"/><line x1="176" y1="170" x2="176" y2="270"/>
+    <line x1="188" y1="170" x2="188" y2="270"/><line x1="200" y1="170" x2="200" y2="270"/>
+    <line x1="212" y1="170" x2="212" y2="270"/><line x1="224" y1="170" x2="224" y2="270"/>
+    <line x1="236" y1="170" x2="236" y2="270"/><line x1="248" y1="170" x2="248" y2="270"/>
+    <line x1="260" y1="170" x2="260" y2="270"/>
+    <line x1="162" y1="172" x2="262" y2="172"/><line x1="162" y1="184" x2="262" y2="184"/>
+    <line x1="162" y1="196" x2="262" y2="196"/><line x1="162" y1="208" x2="262" y2="208"/>
+    <line x1="162" y1="220" x2="262" y2="220"/><line x1="162" y1="232" x2="262" y2="232"/>
+    <line x1="162" y1="244" x2="262" y2="244"/><line x1="162" y1="256" x2="262" y2="256"/>
+    <line x1="162" y1="268" x2="262" y2="268"/>
+  </g>
+  <circle cx="212" cy="270" r="5" fill="#DCEBFA" stroke="#9CC2E8" stroke-width="1"/>
+  <circle cx="212" cy="220" r="50" fill="none" stroke="#7E8C99" stroke-width="1.5"/>
+  <text class="tag" x="372" y="148" text-anchor="end">リングフレーム</text>
+  <line class="lead" x1="296" y1="144" x2="262" y2="170"/>
+  <text class="cap" x="212" y="308" text-anchor="middle">テープに貼り、1 枚に多数のチップが並ぶ</text>
+
+  <line x1="390" y1="205" x2="420" y2="205" stroke="#57606A" stroke-width="2.5" marker-end="url(#ah)"/>
+
+  <!-- Panel 2 : dicing, side view -->
+  <rect class="panel" x="428" y="90" width="344" height="230"/>
+  <circle cx="454" cy="118" r="13" fill="#0969DA"/><text class="num" x="454" y="123" text-anchor="middle">2</text>
+  <text class="h" x="476" y="124">ブレードで切断（ダイシング）</text>
+
+  <rect class="frame" x="452" y="222" width="296" height="68"/>
+  <rect x="453" y="236" width="294" height="7"  fill="url(#deviceGrad)"/>
+  <rect x="453" y="243" width="294" height="26" fill="url(#waferGrad)"/>
+  <rect x="453" y="269" width="294" height="5"  fill="#BFE1F6"/>
+  <rect x="453" y="274" width="294" height="15" fill="url(#tapeGrad)"/>
+
+  <rect x="674" y="236" width="12" height="50" fill="#FFFFFF" stroke="#8C959F" stroke-width="0.8"/>
+  <path class="burrS" d="M674 236 C 666 224 670 216 678 219"/>
+  <path class="burrS" d="M686 236 C 694 222 702 217 697 226"/>
+
+  <rect x="514" y="236" width="12" height="50" fill="#FFFFFF"/>
+  <circle cx="520" cy="240" r="46" fill="url(#bladeGrad)" stroke="#6E7781" stroke-width="2"/>
+  <circle cx="520" cy="240" r="32" fill="none" stroke="#FFFFFF" stroke-width="1.2" opacity="0.7"/>
+  <circle cx="520" cy="240" r="9" fill="#6E7781"/>
+  <path d="M488 186 A 40 40 0 0 1 552 178" fill="none" stroke="#3A3F45" stroke-width="2" marker-end="url(#ah)"/>
+  <text class="tag" x="562" y="172">ブレード</text>
+  <text class="warn" x="712" y="214" text-anchor="middle">バリ</text>
+  <text class="cap" x="600" y="308" text-anchor="middle">フルカット：切断面の端部へアルミが引き伸ばされる</text>
+
+  <line x1="778" y1="205" x2="808" y2="205" stroke="#57606A" stroke-width="2.5" marker-end="url(#ah)"/>
+
+  <!-- Panel 3 : separated chips still on tape -->
+  <rect class="panel" x="816" y="90" width="344" height="230"/>
+  <circle cx="842" cy="118" r="13" fill="#0969DA"/><text class="num" x="842" y="123" text-anchor="middle">3</text>
+  <text class="h" x="864" y="124">チップ単位に分離</text>
+
+  <rect class="frame" x="840" y="222" width="296" height="68"/>
+  <rect x="841" y="236" width="294" height="7"  fill="url(#deviceGrad)"/>
+  <rect x="841" y="243" width="294" height="26" fill="url(#waferGrad)"/>
+  <rect x="841" y="269" width="294" height="5"  fill="#BFE1F6"/>
+  <rect x="841" y="274" width="294" height="15" fill="url(#tapeGrad)"/>
+  <text class="tag" x="1132" y="233" text-anchor="end">テープ上に保持</text>
+
+  <rect x="907" y="236" width="10" height="50" fill="#FFFFFF" stroke="#8C959F" stroke-width="0.8"/>
+  <rect x="983" y="236" width="10" height="50" fill="#FFFFFF" stroke="#8C959F" stroke-width="0.8"/>
+  <rect x="1059" y="236" width="10" height="50" fill="#FFFFFF" stroke="#8C959F" stroke-width="0.8"/>
+  <path class="burrS" d="M907 236 C 900 226 903 219 910 222"/>
+  <path class="burrS" d="M917 236 C 924 223 931 219 927 227"/>
+  <path class="burrS" d="M983 236 C 975 222 979 214 987 218"/>
+  <path class="burrS" d="M993 236 C 1001 224 1007 220 1003 228"/>
+  <path class="burrS" d="M1059 236 C 1052 226 1055 220 1062 223"/>
+  <path class="burrS" d="M1069 236 C 1076 224 1082 220 1078 228"/>
+  <circle cx="988" cy="232" r="24" fill="none" stroke="#BF8700" stroke-width="2" stroke-dasharray="5 4"/>
+  <text class="cap" x="988" y="308" text-anchor="middle">カーフ側壁の端部にバリが残ることがある</text>
+
+  <line x1="988" y1="322" x2="988" y2="346" stroke="#BF8700" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#dim)"/>
+  <text class="warn" x="1002" y="342">拡大</text>
+
+  <!-- ================= Zoom band ================= -->
+  <rect class="panel" x="40" y="352" width="1120" height="308" fill="#FFFBF0" stroke="#E0C88A"/>
+  <text class="h" x="62" y="382">これが「AL カットバリ」 ― カーフ（切断溝）側壁の拡大</text>
+  <text class="b" x="62" y="406">切断時にアルミが引き伸ばされ、薄い紙を巻いたような渦巻き状の跡や突起が、カーフの端部に残る。肉眼では見えない μm 単位。</text>
+
+  <rect class="frame" x="380" y="436" width="520" height="170"/>
+  <rect x="381" y="520" width="518" height="10" fill="url(#deviceGrad)"/>
+  <rect x="381" y="530" width="518" height="48" fill="url(#waferGrad)"/>
+  <rect x="381" y="578" width="518" height="8"  fill="#BFE1F6"/>
+  <rect x="381" y="586" width="518" height="19" fill="url(#tapeGrad)"/>
+  <rect x="624" y="520" width="28" height="78" fill="#FFFFFF" stroke="#8C959F" stroke-width="1"/>
+
+  <text class="lyr" x="300" y="525" text-anchor="end">Device layer（アルミ配線層）</text>
+  <line class="lead" x1="306" y1="521" x2="380" y2="525"/>
+  <text class="lyr" x="300" y="558" text-anchor="end">Wafer（シリコン母材）</text>
+  <line class="lead" x1="306" y1="554" x2="380" y2="554"/>
+  <text class="lyr" x="300" y="583" text-anchor="end">Glue（接着層）</text>
+  <line class="lead" x1="306" y1="579" x2="380" y2="582"/>
+  <text class="lyr" x="300" y="604" text-anchor="end">Tape（ダイシングテープ）</text>
+  <line class="lead" x1="306" y1="600" x2="380" y2="596"/>
+
+  <path class="burr" d="M624 520 C 610 494 596 486 592 502 C 589 514 602 518 606 508"/>
+  <path class="burr" d="M652 520 C 654 480 668 456 686 462 C 702 468 700 492 684 490 C 673 489 673 476 682 474"/>
+
+  <g stroke="#D4A72C" stroke-width="0.9">
+    <line x1="560" y1="494" x2="602" y2="494"/>
+    <line x1="560" y1="520" x2="624" y2="520"/>
+    <line x1="736" y1="462" x2="690" y2="462"/>
+    <line x1="736" y1="520" x2="652" y2="520"/>
+  </g>
+  <line x1="572" y1="520" x2="572" y2="494" stroke="#BF8700" stroke-width="1.8" marker-start="url(#dim)" marker-end="url(#dim)"/>
+  <text class="warn" x="556" y="503" text-anchor="end">通常バリ高さ</text>
+  <line x1="724" y1="520" x2="724" y2="462" stroke="#BF8700" stroke-width="1.8" marker-start="url(#dim)" marker-end="url(#dim)"/>
+  <text class="warn" x="744" y="494">最大バリ高さ</text>
+
+  <text class="warn" x="946" y="470">AL カットバリ</text>
+  <line class="lead" x1="940" y1="466" x2="706" y2="466" stroke="#BF8700"/>
+  <text class="s" x="638" y="628" text-anchor="middle">カーフ（切断溝）</text>
+  <line class="lead" x1="638" y1="614" x2="638" y2="606" stroke="#8C959F" marker-end="url(#ah)"/>
+
+  <text class="s" x="62" y="650">1 チップにつき「通常バリ」と「最大バリ」の形状（バリ／ヒゲ）と高さを記録し、検査条件ごとに整理する。</text>
+
+  <!-- ================= Row C ================= -->
+  <rect class="panel" x="40" y="690" width="538" height="212"/>
+  <circle cx="66" cy="718" r="13" fill="#CF222E"/><text class="num" x="66" y="723" text-anchor="middle">4</text>
+  <text class="h" x="88" y="724">ワイヤボンディングでワイヤが引っかかる</text>
+
+  <rect x="78" y="828" width="184" height="36" fill="url(#waferGrad)" stroke="#57606A" stroke-width="1.5"/>
+  <rect x="78" y="820" width="184" height="8" fill="url(#deviceGrad)" stroke="#57606A" stroke-width="1"/>
+  <rect x="98" y="812" width="48" height="8" fill="#C4CDD6" stroke="#57606A" stroke-width="1"/>
+  <text class="s" x="170" y="852" text-anchor="middle">チップ</text>
+  <text class="tag" x="92" y="819" text-anchor="end">パッド</text>
+  <rect x="392" y="842" width="164" height="26" fill="#E4EAF0" stroke="#57606A" stroke-width="1.5"/>
+  <text class="s" x="474" y="860" text-anchor="middle">基板側リード</text>
+  <path d="M122 812 C 190 760 300 752 400 840" fill="none" stroke="#57606A" stroke-width="3"/>
+  <text class="s" x="300" y="746" text-anchor="middle">ボンディングワイヤ</text>
+  <path class="burr" d="M262 820 C 264 794 276 782 288 788 C 298 793 294 806 285 804"/>
+  <circle cx="272" cy="800" r="30" fill="none" stroke="#CF222E" stroke-width="2.5" stroke-dasharray="6 4"/>
+  <path d="M262 790 L282 810 M282 790 L262 810" stroke="#CF222E" stroke-width="3" stroke-linecap="round"/>
+  <text class="cap" x="309" y="890" text-anchor="middle">髪の毛より細いワイヤが、バリに触れる／引っかかる</text>
+
+  <line x1="584" y1="796" x2="614" y2="796" stroke="#CF222E" stroke-width="2.5" marker-end="url(#ahr)"/>
+
+  <rect class="panel" x="622" y="690" width="538" height="212"/>
+  <circle cx="648" cy="718" r="13" fill="#CF222E"/><text class="num" x="648" y="723" text-anchor="middle">5</text>
+  <text class="h" x="670" y="724">メモリチップが不良品になる</text>
+
+  <rect x="650" y="744" width="482" height="30" rx="6" fill="#FFFFFF" stroke="#D0D7DE"/>
+  <text class="bad" x="891" y="764" text-anchor="middle">接続不良（ワイヤが正しく接合できない）</text>
+  <path d="M885 776 L897 776 L891 782 z" fill="#CF222E"/>
+  <rect x="650" y="784" width="482" height="30" rx="6" fill="#FFFFFF" stroke="#D0D7DE"/>
+  <text class="bad" x="891" y="804" text-anchor="middle">抵抗の増加 → 通電時の発熱</text>
+  <path d="M885 816 L897 816 L891 822 z" fill="#CF222E"/>
+  <rect x="650" y="824" width="482" height="30" rx="6" fill="#FFFFFF" stroke="#D0D7DE"/>
+  <text class="bad" x="891" y="844" text-anchor="middle">最悪の場合はショート</text>
+  <path d="M885 856 L897 856 L891 862 z" fill="#CF222E"/>
+  <rect x="650" y="864" width="482" height="30" rx="6" fill="#FFEBE9" stroke="#CF222E" stroke-width="1.5"/>
+  <text class="bad" x="891" y="884" text-anchor="middle" font-weight="700" fill="#CF222E">使えないメモリチップ（不良品）</text>
+
+  <rect x="40" y="922" width="1120" height="56" rx="10" fill="#F0F6FF" stroke="#B6D3F5" stroke-width="1.5"/>
+  <text class="b" x="600" y="948" text-anchor="middle" font-weight="700">だから ―</text>
+  <text class="b" x="600" y="968" text-anchor="middle">バリが発生しない、またはワイヤボンディングに干渉しない大きさ・形状（ボーダーライン以下）に収まる切断条件を確認する。</text>
+</svg>

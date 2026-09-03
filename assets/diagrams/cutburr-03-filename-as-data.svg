@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 606" width="1200" height="606" role="img" aria-label="画像ファイル名を構造化データとして設計し、Excelの列へ自動展開する対応表">
+  <style>
+    text{font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo","Noto Sans JP",-apple-system,"Segoe UI",sans-serif}
+    .t1{font-size:28px;font-weight:700;fill:#1F2328}
+    .t2{font-size:16px;fill:#57606A}
+    .fn{font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;font-size:26px;font-weight:700;fill:#FFFFFF}
+    .fng{font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;font-size:26px;font-weight:700;fill:#57606A}
+    .cap{font-size:12.5px;fill:#57606A}
+    .th{font-size:14px;font-weight:700;fill:#FFFFFF}
+    .td{font-size:14px;fill:#1F2328}
+    .tdm{font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;font-size:13px;fill:#0550AE}
+    .col{font-size:14px;font-weight:700;fill:#FFFFFF}
+  </style>
+  <rect x="0" y="0" width="1200" height="606" fill="#FFFFFF"/>
+  <text class="t1" x="40" y="38">ファイル名そのものを、構造化データにする</text>
+  <text class="t2" x="40" y="66">測定時に決めた命名規則が、そのまま Excel の 7 項目へ展開される。手入力する場所はもう無い。</text>
+
+  <rect x="333" y="106" width="90"  height="50" fill="#0969DA"/>
+  <rect x="423" y="106" width="36"  height="50" fill="#8250DF"/>
+  <rect x="459" y="106" width="36"  height="50" fill="#1A7F37"/>
+  <rect x="495" y="106" width="18"  height="50" fill="#EAEEF2"/>
+  <rect x="513" y="106" width="18"  height="50" fill="#BF8700"/>
+  <rect x="531" y="106" width="72"  height="50" fill="#D4A72C"/>
+  <rect x="603" y="106" width="66"  height="50" fill="#EAEEF2"/>
+  <rect x="669" y="106" width="18"  height="50" fill="#CF222E"/>
+  <rect x="687" y="106" width="72"  height="50" fill="#E5534B"/>
+  <rect x="759" y="106" width="108" height="50" fill="#EAEEF2"/>
+
+  <text class="fn"  x="378" y="141" text-anchor="middle">84-50</text>
+  <text class="fn"  x="441" y="141" text-anchor="middle">TE</text>
+  <text class="fn"  x="477" y="141" text-anchor="middle">04</text>
+  <text class="fng" x="504" y="141" text-anchor="middle">_</text>
+  <text class="fn"  x="522" y="141" text-anchor="middle">b</text>
+  <text class="fn"  x="567" y="141" text-anchor="middle">3.20</text>
+  <text class="fng" x="636" y="141" text-anchor="middle">um｜</text>
+  <text class="fn"  x="678" y="141" text-anchor="middle">b</text>
+  <text class="fn"  x="723" y="141" text-anchor="middle">5.10</text>
+  <text class="fng" x="813" y="141" text-anchor="middle">um.jpg</text>
+
+  <text class="cap" x="378" y="176" text-anchor="middle">ウェハ型番</text>
+  <text class="cap" x="567" y="176" text-anchor="middle">通常バリ 形状＋高さ</text>
+  <text class="cap" x="813" y="176" text-anchor="middle">末尾アンカー</text>
+  <text class="cap" x="441" y="194" text-anchor="middle">面内位置</text>
+  <text class="cap" x="723" y="194" text-anchor="middle">最大バリ 形状＋高さ</text>
+  <text class="cap" x="477" y="212" text-anchor="middle">チップNo</text>
+  <text class="cap" x="636" y="212" text-anchor="middle">区切り／アンカー</text>
+
+  <line x1="600" y1="226" x2="600" y2="238" stroke="#8C959F" stroke-width="2"/>
+  <path d="M600 244 L594 236 L606 236 z" fill="#8C959F"/>
+
+  <rect x="80" y="252" width="1040" height="34" fill="#1F2328"/>
+  <text class="th" x="112" y="274">列</text>
+  <text class="th" x="176" y="274">項目</text>
+  <text class="th" x="384" y="274">抽出方法（Excel 関数）</text>
+  <text class="th" x="928" y="274">出力例</text>
+
+  <g class="td">
+    <rect x="80" y="286" width="1040" height="34" fill="#FFFFFF" stroke="#D0D7DE"/>
+    <rect x="96" y="294" width="32" height="18" rx="4" fill="#0969DA"/><text class="col" x="112" y="308" text-anchor="middle">B</text>
+    <text x="176" y="308">正式型番</text>
+    <text class="tdm" x="384" y="308">IF(MID(A2,1,5)="84-50","DCH003484-50", …)</text>
+    <text class="tdm" x="928" y="308">DCH003484-50</text>
+
+    <rect x="80" y="320" width="1040" height="34" fill="#F6F8FA" stroke="#D0D7DE"/>
+    <rect x="96" y="328" width="32" height="18" rx="4" fill="#8250DF"/><text class="col" x="112" y="342" text-anchor="middle">C</text>
+    <text x="176" y="342">面内位置</text>
+    <text class="tdm" x="384" y="342">IF(MID(A2,6,2)="TE","Top Edge", …)</text>
+    <text class="tdm" x="928" y="342">Top Edge</text>
+
+    <rect x="80" y="354" width="1040" height="34" fill="#FFFFFF" stroke="#D0D7DE"/>
+    <rect x="96" y="362" width="32" height="18" rx="4" fill="#1A7F37"/><text class="col" x="112" y="376" text-anchor="middle">D</text>
+    <text x="176" y="376">チップNo</text>
+    <text class="tdm" x="384" y="376">IFERROR(MID(A2,8,2)*1,"該当なし")</text>
+    <text class="tdm" x="928" y="376">4</text>
+
+    <rect x="80" y="388" width="1040" height="34" fill="#F6F8FA" stroke="#D0D7DE"/>
+    <rect x="96" y="396" width="32" height="18" rx="4" fill="#BF8700"/><text class="col" x="112" y="410" text-anchor="middle">E</text>
+    <text x="176" y="410">通常バリ形状</text>
+    <text class="tdm" x="384" y="410">MID(A2,FIND("_",A2)+1,1) → b＝バリ / h＝ヒゲ</text>
+    <text class="tdm" x="928" y="410">バリ</text>
+
+    <rect x="80" y="422" width="1040" height="34" fill="#FFFFFF" stroke="#D0D7DE"/>
+    <rect x="96" y="430" width="32" height="18" rx="4" fill="#D4A72C"/><text class="col" x="112" y="444" text-anchor="middle">F</text>
+    <text x="176" y="444">通常バリ高さ</text>
+    <text class="tdm" x="384" y="444">MID(A2,FIND("_",A2)+2,FIND("um｜",A2)-FIND("_",A2)-2)*1</text>
+    <text class="tdm" x="928" y="444">3.20</text>
+
+    <rect x="80" y="456" width="1040" height="34" fill="#F6F8FA" stroke="#D0D7DE"/>
+    <rect x="96" y="464" width="32" height="18" rx="4" fill="#CF222E"/><text class="col" x="112" y="478" text-anchor="middle">G</text>
+    <text x="176" y="478">最大バリ形状</text>
+    <text class="tdm" x="384" y="478">MID(A2,FIND("｜",A2)+1,1) → b＝バリ / h＝ヒゲ</text>
+    <text class="tdm" x="928" y="478">バリ</text>
+
+    <rect x="80" y="490" width="1040" height="34" fill="#FFFFFF" stroke="#D0D7DE"/>
+    <rect x="96" y="498" width="32" height="18" rx="4" fill="#E5534B"/><text class="col" x="112" y="512" text-anchor="middle">H</text>
+    <text x="176" y="512">最大バリ高さ</text>
+    <text class="tdm" x="384" y="512">MID(A2,FIND("｜",A2)+2,FIND("um.jpg",A2)-FIND("｜",A2)-2)*1</text>
+    <text class="tdm" x="928" y="512">5.10</text>
+  </g>
+
+  <rect x="80" y="542" width="1040" height="44" rx="8" fill="#F0F6FF" stroke="#B6D3F5" stroke-width="1.5"/>
+  <text class="td" x="600" y="569" text-anchor="middle">アンカーを <tspan class="tdm">um｜</tspan> ／ <tspan class="tdm">um.jpg</tspan> という複数文字にしたことで、<tspan class="tdm">um</tspan> が 2 回出てくる名前でも切り出し位置がずれない。</text>
+</svg>

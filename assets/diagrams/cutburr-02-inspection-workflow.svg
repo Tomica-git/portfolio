@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 706" width="1200" height="706" role="img" aria-label="ALカットバリ検査の実作業フローと、カットバリ入力マクロが自動化した範囲">
+  <defs>
+    <marker id="ah2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8C959F"/>
+    </marker>
+  </defs>
+  <style>
+    text{font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo","Noto Sans JP",-apple-system,"Segoe UI",sans-serif}
+    .t1{font-size:28px;font-weight:700;fill:#1F2328}
+    .t2{font-size:16px;fill:#57606A}
+    .h{font-size:17px;font-weight:700;fill:#1F2328}
+    .s{font-size:14px;fill:#57606A}
+    .num{font-size:15px;font-weight:700;fill:#FFFFFF}
+    .chip{font-size:14px;font-weight:700;fill:#FFFFFF}
+    .box{fill:#FFFFFF;stroke:#D0D7DE;stroke-width:1.5}
+    .mono{font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;font-size:13px;fill:#0550AE}
+  </style>
+
+  <rect x="0" y="0" width="1200" height="706" fill="#FFFFFF"/>
+  <text class="t1" x="40" y="38">AL カットバリ検査の実作業フロー</text>
+  <text class="t2" x="40" y="66">現場での観察・記録から、条件ごとの比較まで。マクロが担当するのは 4〜5 の「転記・整形」だけです。</text>
+
+  <!-- automated range panel -->
+  <rect x="28" y="374" width="1144" height="194" rx="12" fill="#EAF6EC" stroke="#9CCFAC" stroke-width="1.5"/>
+  <rect x="52" y="362" width="368" height="26" rx="13" fill="#1A7F37"/>
+  <text class="chip" x="236" y="380" text-anchor="middle">カットバリ入力マクロが自動化した範囲</text>
+
+  <!-- 1 -->
+  <rect class="box" x="40" y="104" width="1120" height="76" rx="8"/>
+  <circle cx="80" cy="142" r="17" fill="#0969DA"/><text class="num" x="80" y="148" text-anchor="middle">1</text>
+  <text class="h" x="114" y="137">ウェハをブレードで切断する</text>
+  <text class="s" x="114" y="161">検査条件（切断条件）を振り分けたうえでダイシングし、チップに分離する</text>
+
+  <line x1="600" y1="182" x2="600" y2="196" stroke="#8C959F" stroke-width="2" marker-end="url(#ah2)"/>
+
+  <!-- 2 -->
+  <rect class="box" x="40" y="198" width="1120" height="76" rx="8"/>
+  <circle cx="80" cy="236" r="17" fill="#0969DA"/><text class="num" x="80" y="242" text-anchor="middle">2</text>
+  <text class="h" x="114" y="231">チップの切断面を観察・測定する</text>
+  <text class="s" x="114" y="255">マイクロスコープで撮影し、「通常バリ」と「最大バリ」それぞれの形状（バリ／ヒゲ）と高さを確認する</text>
+
+  <line x1="600" y1="276" x2="600" y2="290" stroke="#8C959F" stroke-width="2" marker-end="url(#ah2)"/>
+
+  <!-- 3 -->
+  <rect class="box" x="40" y="292" width="1120" height="76" rx="8"/>
+  <circle cx="80" cy="330" r="17" fill="#0969DA"/><text class="num" x="80" y="336" text-anchor="middle">3</text>
+  <text class="h" x="114" y="325">測定結果を画像ファイル名に記録する</text>
+  <text class="mono" x="114" y="350">84-50TE04_b3.20um｜b5.10um.jpg  ← 型番・面内位置・チップNo・バリ形状・高さをそのまま名前に埋め込む</text>
+
+  <line x1="600" y1="370" x2="600" y2="384" stroke="#8C959F" stroke-width="2" marker-end="url(#ah2)"/>
+
+  <!-- 4 -->
+  <rect class="box" x="40" y="386" width="1120" height="76" rx="8" stroke="#1A7F37"/>
+  <circle cx="80" cy="424" r="17" fill="#1A7F37"/><text class="num" x="80" y="430" text-anchor="middle">4</text>
+  <text class="h" x="114" y="419">フォルダ内の画像ファイル名を一括取得し、一覧化する</text>
+  <text class="s" x="114" y="443">VBA がフォルダを走査し、<tspan class="mono">filelist</tspan> シートへ全ファイル名を出力する（従来は手で打ち込んでいた部分）</text>
+
+  <line x1="600" y1="464" x2="600" y2="478" stroke="#8C959F" stroke-width="2" marker-end="url(#ah2)"/>
+
+  <!-- 5 -->
+  <rect class="box" x="40" y="480" width="1120" height="76" rx="8" stroke="#1A7F37"/>
+  <circle cx="80" cy="518" r="17" fill="#1A7F37"/><text class="num" x="80" y="524" text-anchor="middle">5</text>
+  <text class="h" x="114" y="513">ファイル名から各データを抽出し、表形式へ変換する</text>
+  <text class="s" x="114" y="537">「バリ測定変換」シートの B〜H 列が、型番・面内位置・チップNo・バリ形状・バリ高さへ自動展開する</text>
+
+  <line x1="600" y1="570" x2="600" y2="584" stroke="#8C959F" stroke-width="2" marker-end="url(#ah2)"/>
+
+  <!-- 6 -->
+  <rect class="box" x="40" y="586" width="1120" height="76" rx="8"/>
+  <circle cx="80" cy="624" r="17" fill="#8250DF"/><text class="num" x="80" y="630" text-anchor="middle">6</text>
+  <text class="h" x="114" y="619">検査条件ごとに結果を並べて提出する</text>
+  <text class="s" x="114" y="643">条件別にバリ高さ・形状を整理して渡す。切断条件の採否は、データを見た上層部が判断する（担当範囲外）</text>
+</svg>
