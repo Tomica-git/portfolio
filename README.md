@@ -28,6 +28,8 @@
 
 # Part 1. AL カットバリ確認 ―「なぜ検査するのか」から
 
+> 使用するマクロ：[カットバリ自動入力マクロ.xlsm](カットバリ自動入力マクロ.xlsm)
+
 ## 1. 半導体ウェハを切り分ける工程
 
 円形の半導体ウェハには、多数のメモリチップが格子状に並んでいます。
@@ -185,7 +187,6 @@ AL カットバリを 50 個測定したときの、作業時間の内訳です�
 > **注記:** 上図は運用時の取り決めですが、リポジトリ内の `.xlsm` に入っている IF ネスト式は
 > `TE` / `BM` / `Ct` / `LE` / `RE` の 5 種類で、`BE`（Bottom Edge）が未実装、
 > Center のコードも `C` ではなく `Ct` になっています。
-> 図と式のどちらが最新かは未確定で、[未確定の事項](#7-この記載で未確定の事項)に挙げています。
 
 ### 5-2. ワークブック構成（3 シート）
 
@@ -203,85 +204,7 @@ AL カットバリを 50 個測定したときの、作業時間の内訳です�
 | ② | **【選択したフォルダからfilelistのシートにファイル名を張り出す】** を押す | `filelist` の A 列へ全ファイル名が出力され、取得件数がメッセージで返る |
 | ③ | `filelist` の A 列をコピーし、`バリ測定変換` の A 列へ貼り付ける | B〜H 列が 7 項目へ自動展開される |
 
-### 5-4. VBA ― フォルダ走査とファイル名の一括取得
-
-```vba
-Sub SelectFolder()
-    Dim folderPath As String
-
-    #If Mac Then
-        Dim scriptString As String
-        scriptString = "return POSIX path of (choose folder with prompt ""フォルダを選択してください"")"
-        On Error Resume Next
-        folderPath = MacScript(scriptString)
-        On Error GoTo 0
-        If folderPath = "False" Then folderPath = ""
-    #Else
-        ' Windows環境用の処理 (4 = msoFileDialogFolderPicker)
-        With Application.FileDialog(4)
-            .Title = "フォルダを選択してください"
-            If .Show = -1 Then
-                folderPath = .SelectedItems(1)
-            End If
-        End With
-    #End If
-
-    If folderPath <> "" Then
-        Me.Range("C5").Value = folderPath
-    End If
-End Sub
-
-Sub GetFileList()
-    Dim folderPath As String
-    folderPath = Me.Range("C5").Value
-
-    If folderPath = "" Then
-        MsgBox "先にフォルダを選択してください", vbExclamation
-        Exit Sub
-    End If
-
-    ' OS環境に応じたパス区切り文字を取得
-    Dim sep As String
-    sep = Application.PathSeparator
-    If Right(folderPath, 1) <> sep Then folderPath = folderPath & sep
-
-    Dim ws As Worksheet
-    Set ws = ThisWorkbook.Sheets("filelist")
-
-    If ws.Cells(ws.Rows.Count, 1).End(xlUp).Row > 1 Then
-        ws.Range("A2:B" & ws.Cells(ws.Rows.Count, 1).End(xlUp).Row).ClearContents
-    End If
-
-    Dim fileName As String
-    Dim r As Long: r = 2
-
-    ' Macでの互換性を考慮しワイルドカードを "*" に変更
-    fileName = Dir(folderPath & "*")
-
-    Do While fileName <> ""
-        ' Mac特有の隠しファイル（.から始まるファイル）を除外
-        If Left(fileName, 1) <> "." Then
-            ws.Cells(r, 1).Value = fileName
-            r = r + 1
-        End If
-        fileName = Dir()
-    Loop
-
-    MsgBox (r - 2) & " 件のファイルを取得しました", vbInformation
-End Sub
-```
-
-短いコードですが、現場で配って使ってもらうために次を入れています。
-
-| 対応 | 理由 |
-|---|---|
-| `#If Mac Then` による分岐 | Windows / Mac のどちらでも同じボタンで動くようにする |
-| `Application.PathSeparator` | パス区切り（`\` と `/`）を環境任せにする |
-| `Left(fileName, 1) <> "."` | `.DS_Store` などの隠しファイルを一覧に混ぜない |
-| 実行前の `ClearContents` | 再実行時に前回の残骸が下に残らないようにする |
-| 取得件数の `MsgBox` | 「本当に全部取れたか」を人が 1 秒で確認できるようにする |
-
-### 5-5. Excel 関数 ― 7 項目への自動展開
+### 5-4. Excel 関数 ― 7 項目への自動展開
 
 `バリ測定変換` シートの B〜H 列に入っている実際の式です。
 
@@ -340,13 +263,6 @@ End Sub
 | 測定項目 | 測定値 1 点 + 破断状態 | 通常／最大の 2 点 × 形状 + 高さ | 業務そのものが違うため |
 | 転記方式 | 複合キー + `INDEX`/`MATCH` で台帳へ | 表として出力しそのまま比較 | カットバリ側は「行を探す」必要がなかったため |
 
-**既知の課題（未修正）**
-
-- 型番の辞書を 2 ファイルへコピーしたため、値が食い違っている箇所があります
-  （破断面版 `DH260507580-50` / `CE260402384-12` に対し、カットバリ版は `DH26050758-50` / `CE26042384-12`）。
-  共通の辞書を 1 か所に持たせるべきで、**同じ定義を 2 か所に複製した典型的な失敗**です。
-- `操作` シートの見出しが `破断面観察 自動入力マクロ` のまま、
-  手順書きも `「貼り付け場所変換」シート`（実際は `バリ測定変換`）のままになっています。
 
 ---
 
@@ -412,6 +328,8 @@ End Sub
 <a id="part-2"></a>
 
 # Part 2. 破断面観察 ― 3〜4 時間 → 約 45 分
+
+> 使用するマクロ：[破断面自動入力マクロ.xlsm](破断面自動入力マクロ.xlsm)
 
 こちらは**別の業務**です。同じ「ファイル名をデータソースにする」思想で作りましたが、
 防いでいる不良も、詰まっていた場所も、効果の出方も違います。
@@ -617,26 +535,6 @@ VBA は カットバリ版と同じ 2 ステップ（フォルダ選択 → `fil
 ├── background.md                    # 業務背景（2 業務の目的と流れ）
 ├── excel_formulas.md                # Excel 関数の設計詳細
 ├── index.html / style.css           # 採用担当者向けの 1 ページ LP
-├── assets/
-│   ├── diagrams/                    # 自作の工程図（SVG・テキストエディタで直接編集できる）
-│   │   ├── cutburr-01-why-inspect.svg          # なぜ検査するのか（因果関係図）
-│   │   ├── cutburr-02-inspection-workflow.svg  # 検査工程フローと自動化範囲
-│   │   ├── cutburr-03-filename-as-data.svg     # ファイル名 → Excel 列の対応
-│   │   └── cutburr-04-effect.svg               # 増えた分と減った分
-│   ├── slides/                      # README 用の説明スライド（JPEG・1400px・計 2.3 MB）
-│   │   ├── cutburr-01-wafer-to-kerf-zoom.jpg      # ウェハ → ストリート → カーフ断面
-│   │   ├── cutburr-02-time-breakdown-150min.jpg   # カットバリ測定 150 分の内訳
-│   │   ├── cutburr-03-wafer-position-codes.jpg    # ウェハ面内位置のコード
-│   │   ├── fracture-01-worksite-setup.jpg         # 現場の機材配置
-│   │   ├── fracture-02-manual-entry-context.jpg   # 手入力時代の作業風景
-│   │   ├── fracture-03-time-breakdown-3h.jpg      # 50 チップ約 3 時間の内訳
-│   │   ├── fracture-04-filename-before-after.jpg  # 命名規則の Before / After
-│   │   ├── fracture-05-filename-as-data.jpg       # ファイル名から情報を読み取る発想
-│   │   ├── fracture-06-excel-auto-entry.jpg       # VBA による Excel 自動整理
-│   │   └── fracture-07-workflow-before-after.jpg  # 改善前後のワークフロー
-│   └── source/                      # スライドの元データ（高解像度 PNG・差し替え用・計 15 MB）
-│       ├── cutburr/                     # slides と同名の PNG（3 点）
-│       └── fracture/                    # slides と同名の PNG（7 点）
 ├── カットバリ自動入力マクロ.xlsm    # AL カットバリ確認用（3 シート + VBA + 関数）
 ├── 破断面自動入力マクロ.xlsm        # 破断面観察用（4 シート + VBA + 関数）
 ├── カットバリdummy_data/            # 動作確認用ダミー画像（50 件）
@@ -716,4 +614,3 @@ Excel 関数と VBA という限られたツールでも目に見える改善を
 大学での学びの土台、現場で手を動かして成果を出した実感、
 そして自分が本当に力を発揮できる領域が明確になったこと。
 この 3 つが重なったことが、ソフトウェア開発を本業にしたいという決意の原点です。
-
