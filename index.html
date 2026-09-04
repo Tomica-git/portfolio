@@ -1,422 +1,164 @@
 <!doctype html>
 <html lang="ja">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="半導体検査工程の入力作業を、探す・入力する・確認する負担から見直したポートフォリオLPです。"
-    />
-    <title>半導体検査工程の業務改善ポートフォリオ</title>
-    <link rel="stylesheet" href="style.css" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="半導体メモリ検査工程の手入力を、ファイル名・Excel関数・VBAで仕組み化したポートフォリオ">
+    <title>Inspection Data, Reframed | Portfolio</title>
+    <link rel="stylesheet" href="style_refero.css">
   </head>
   <body>
+    <a class="skip-link" href="#main">本文へ移動</a>
+
     <header class="site-header">
-      <a class="brand" href="#top">業務改善ポートフォリオ</a>
-      <nav class="site-nav" aria-label="主要ナビゲーション">
-        <a href="#background">業務背景</a>
-        <a href="#chip-strength">強度評価</a>
-        <a href="#pain">困りごと</a>
-        <a href="#idea">工夫</a>
-        <a href="#github">GitHub</a>
+      <a class="brand" href="#top" aria-label="Inspection Data, Reframed ホーム">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>INSPECTION / DATA</span>
+      </a>
+      <nav class="site-nav" aria-label="メインナビゲーション">
+        <a href="#problem">PROBLEM</a>
+        <a href="#system">SYSTEM</a>
+        <a href="#result">RESULT</a>
+        <a class="nav-cta" href="https://github.com/Tomica-git/portfolio">READ THE CASE</a>
       </nav>
     </header>
 
-    <main id="top">
-      <section class="hero section-band">
-        <div class="container hero-grid">
-          <div class="hero-copy">
-            <p class="eyebrow">Excel業務改善 / GitHub Portfolio</p>
-            <h1>探して、入力して、また確認する作業を短くした話。</h1>
-            <p class="lead">
-              測定・画像撮影PCと、Excel台帳・集計用PCが分かれ、測定機から直接データ連携できない環境で、半導体メモリの評価記録をファイル名のルール化とExcel照合で見直しました。
-            </p>
-            <div class="hero-actions">
-              <a class="button primary" href="#background">業務背景を見る</a>
-              <a class="button secondary" href="https://github.com/Tomica-git/portfolio/blob/main/README.md">READMEで詳しく見る</a>
-              <a class="button ghost" href="https://github.com/Tomica-git/portfolio">GitHubを見る</a>
-            </div>
+    <main id="main">
+      <section id="top" class="hero section-shell">
+        <div class="hero-copy">
+          <p class="kicker amber">FIELD NOTE / QUALITY CONTROL</p>
+          <h1>ファイル名を、<br><em>データベース</em>に変えた。</h1>
+          <p class="hero-lead">半導体メモリの検査画像に埋め込まれた情報を読み取り、手入力中心だった記録工程を、現場で使える仕組みへ組み替えました。</p>
+          <div class="hero-actions">
+            <a class="primary-cta" href="#result">見る：改善結果 <span aria-hidden="true">↘</span></a>
+            <a class="text-link" href="https://github.com/Tomica-git/portfolio">READMEを読む <span aria-hidden="true">↗</span></a>
           </div>
+          <dl class="hero-metrics">
+            <div>
+              <dt>Manual record</dt>
+              <dd>3–4<span>h</span></dd>
+            </div>
+            <div class="metric-arrow" aria-hidden="true">→</div>
+            <div>
+              <dt>After automation</dt>
+              <dd>45<span>m</span></dd>
+            </div>
+          </dl>
+        </div>
 
-          <aside class="time-panel" aria-label="作業時間の改善">
-            <p class="panel-label">作業時間</p>
-            <div class="time-shift">
-              <span>3〜4時間</span>
-              <b aria-hidden="true">→</b>
-              <strong>約45分</strong>
-            </div>
-            <p class="one-line">人が探す作業を、Excelが照合する作業へ変えました。</p>
-            <div class="mini-stats">
-              <span>目視検索 → 自動照合</span>
-              <span>手入力 → 転記支援</span>
-              <span>再確認中心 → 確認ポイント集中</span>
-            </div>
-          </aside>
+        <div class="constellation" aria-hidden="true">
+          <div class="constellation-core">
+            <i class="particle p01"></i><i class="particle p02"></i><i class="particle p03"></i>
+            <i class="particle p04"></i><i class="particle p05"></i><i class="particle p06"></i>
+            <i class="particle p07"></i><i class="particle p08"></i><i class="particle p09"></i>
+            <i class="particle p10"></i><i class="particle p11"></i><i class="particle p12"></i>
+            <i class="particle p13"></i><i class="particle p14"></i><i class="particle p15"></i>
+            <i class="particle p16"></i><i class="particle p17"></i><i class="particle p18"></i>
+            <i class="particle p19"></i><i class="particle p20"></i><i class="particle p21"></i>
+            <i class="particle p22"></i><i class="particle p23"></i><i class="particle p24"></i>
+          </div>
+          <span class="orbit-label label-a">measurement</span>
+          <span class="orbit-label label-b">filename</span>
+          <span class="orbit-label label-c">decision</span>
         </div>
       </section>
 
-      <section id="background" class="section">
-        <div class="container">
-          <div class="section-heading compact">
-            <p class="eyebrow">Background</p>
-            <h2>どういった製品を扱う工場の評価内容だったのか</h2>
-            <p class="one-line">PCやスマホに使われる半導体メモリについて、特定条件のウェハで強度の傾向を調べる工程でした。</p>
-          </div>
-          <div class="background-layout">
-            <div class="background-copy">
-              <p>
-                前職では、PCやスマホなどに使われる半導体メモリの生産評価工程に関わっていました。ここで扱うのは、製品そのものの紹介ではなく、製造条件や材料条件によってチップの強度にどのような傾向が出るかを確認する評価業務です。
-              </p>
-              <p>
-                半導体メモリは、円盤状のウェハ上に多数の小さなチップを作り、後工程で1つずつ切り出して扱います。チップは薄く小さいため、切断や装置での取り扱いの中で、欠け・割れ・応力の影響を受けることがあります。
-              </p>
-            </div>
-            <div class="context-grid" aria-label="評価工程の概要">
-              <div class="context-item">
-                <b>対象領域</b>
-                <span>PCやスマホに使われる半導体メモリ</span>
-              </div>
-              <div class="context-item">
-                <b>評価対象</b>
-                <span>特定条件のウェハから取ったサンプル</span>
-              </div>
-              <div class="context-item">
-                <b>観察内容</b>
-                <span>破断面をマイクロスコープで撮影</span>
-              </div>
-              <div class="context-item">
-                <b>見たい関係</b>
-                <span>ウェハ箇所・破断面・抗圧力の相関</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="chip-strength" class="section">
-        <div class="container">
-          <div class="section-heading compact">
-            <p class="eyebrow">Why Evaluate</p>
-            <h2>なぜチップ強度を評価するのか</h2>
-            <p class="one-line">チップは切り出し後に装置で持ち上げ、基板に載せ、ワイヤで接続して樹脂で封止されます。途中で割れ・欠け・微小クラックがあると、接続不良や歩留まり低下につながる場合があります。</p>
-          </div>
-          <div class="infographic-layout">
-            <figure class="infographic-frame">
-              <img
-                src="assets/images/chip-strength-infographic.png"
-                alt="ウェハからチップを切り出し、弱い力でピックアップして基板実装、ワイヤ接続、樹脂封止、検査へ進む流れと、外周部と中央部の強度ばらつき、割れ・欠け・微小クラック・接続不良・歩留まり低下の例を示した図解"
-                loading="lazy"
-              />
-              <figcaption>
-                公開用に一般化した説明図です。実製品名・実測値・会社名は含めていません。
-              </figcaption>
-            </figure>
-            <div class="infographic-notes" aria-label="図解の要点">
-              <article>
-                <h3>外周部はばらつきが出る場合がある</h3>
-                <p>ウェハ外周部は、切断時の欠けや応力の影響を受けやすく、中央部より強度にばらつきが出る場合があります。</p>
-              </article>
-              <article>
-                <h3>境目を見る評価</h3>
-                <p>どのくらいの弱い力なら安全に持ち上げられるか、その境目を評価して、取り扱い条件の見直しにつなげます。</p>
-              </article>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section section-muted">
-        <div class="container">
-          <div class="section-heading compact">
-            <p class="eyebrow">Assigned Work</p>
-            <h2>その現場で頼まれた仕事内容と、教えられた手順の不便さ</h2>
-            <p class="one-line">評価そのものよりも、測定結果を正しい台帳セルへ移す手順が重い作業でした。</p>
-          </div>
-          <div class="background-copy split-copy">
-            <div class="copy-block">
-              <h3>任された業務</h3>
-              <p>
-                そこで私は、破断面観察の記録業務を任されました。
-              </p>
-              <p>
-                この評価では、特定条件（材質など）のウェハから取ったサンプルチップに力をかけ、割れやすさを確認します。破断後はサンプルの破断面をマイクロスコープで撮影し、ウェハ上の箇所、破断面の状態、破断時の抗圧力を記録します。
-              </p>
-              <p>
-                目的は単品の合否を決めることではなく、ウェハの箇所、材料条件、破断面、抗圧力の相関傾向を把握することです。どこに弱い傾向が出るのかを調べることで、品質改善や工程条件の見直しにつながる手がかりを得ます。
-              </p>
-            </div>
-            <div class="copy-block">
-              <h3>教えられた手順の不便さ</h3>
-              <p>
-                ただし現場の流れは単純ではありませんでした。測定器につながった旧型の測定・画像撮影PCと、Excel台帳や集計・発表に使う支給PCが分かれており、データ流出を防ぐためにPC間のやりとりはUSB経由に限られていました。さらに、測定値を別PCの台帳へ直接入力する機能もなく、測定機から台帳へ直接データを送ることができない環境でした。
-              </p>
-              <p>
-                そのため、1サンプルごとに測定・画像撮影PCで数値を確認し、画像名を入力して撮影した後、別PCのExcel台帳へ同じ数値を手入力する必要がありました。この往復が数十サンプル分続くため、入力そのものだけでなく、確認先を切り替えるたびのロスと集中の途切れが大きな負担になっていました。
-              </p>
-              <p>
-                さらに、入力先は単純な空欄ではありません。事前に数千行規模の破断テスト台帳からピックアップされた数十行について、正しいセルを探し、対応する測定値を間違えずに入れる必要がありました。つまりExcelの記録ミスは、単なる入力ミスではなく、位置や方向の傾向を見誤る原因にもなり得ます。
-              </p>
-            </div>
-          </div>
-          <div class="device-flow" aria-label="改善前の端末間の流れ">
-            <div class="device-step">
-              <b>測定・画像撮影PC</b>
-              <small>測定器接続・旧型・大型モニター</small>
-              <span>測定器の数値を確認し、画像名を入力して撮影</span>
-            </div>
-            <div class="device-arrow">
-              <small>データ流出を防ぐためUSB経由のみ</small>
-              <span>→</span>
-            </div>
-            <div class="device-step">
-              <b>Excel台帳・集計PC</b>
-              <small>支給された新しめの業務用PC</small>
-              <span>該当行を探し、測定値を手入力して後工程で集計</span>
-            </div>
-            <div class="device-note">
-              <b>制約</b>
-              <span>PCの新旧や性能差ではなく、測定器側から台帳側へ直接連携できず、測定値を直接別PCへ入力する機能もないことが問題でした。数十サンプル分を1件ずつPC間で見比べ、数千行規模の台帳から正しいセルを探して手入力していました。</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="summary" class="section">
-        <div class="container">
-          <div class="section-heading compact">
-            <p class="eyebrow">Summary</p>
-            <h2>3分でわかる全体像</h2>
-            <p class="one-line">価値があったのは、直接連携できない情報を正しく結びつける負担を減らしたことです。</p>
-          </div>
-          <div class="story-cards">
-            <article class="story-card">
-              <span class="icon-badge" aria-hidden="true">🔍</span>
-              <h3>困りごと</h3>
-              <p>2台のPCを見比べ、数千行規模の台帳から対象の数十行を目で探していた。</p>
-            </article>
-            <article class="story-card">
-              <span class="icon-badge" aria-hidden="true">🏷️</span>
-              <h3>工夫</h3>
-              <p>画像名に略号データを入れ、Excelが読める入力元にした。</p>
-            </article>
-            <article class="story-card">
-              <span class="icon-badge" aria-hidden="true">✅</span>
-              <h3>結果</h3>
-              <p>主な作業が手入力から照合確認へ移り、約45分まで短縮した。</p>
-            </article>
-          </div>
-          <div class="summary-visuals" aria-label="困りごとから改善までのイメージ">
-            <figure class="summary-visual">
-              <img
-                src="assets/images/workplace-pain-illustration.png"
-                alt="旧型の測定器接続PCと支給されたExcel台帳PCを往復し、数十サンプル分を1件ずつ見比べながら入力していた改善前のイラスト"
-                loading="lazy"
-              />
-              <figcaption>改善前：2台PCを見比べて手入力</figcaption>
-            </figure>
-            <figure class="summary-visual">
-              <img
-                src="assets/images/workflow-solution-illustration.png"
-                alt="画像名に略号データを入れ、Excelで読み取りやすい入力元にして照合確認へ移した改善後のイラスト"
-                loading="lazy"
-              />
-              <figcaption>改善後：画像名を入力元にして照合</figcaption>
-            </figure>
-          </div>
-        </div>
-      </section>
-
-      <section id="pain" class="section section-muted">
-        <div class="container">
-          <div class="section-heading compact">
-            <p class="eyebrow">Before</p>
-            <h2>改善前：時間が溶けていた流れ</h2>
-            <p class="one-line">直接データ連携できないため、1サンプルごとに2台のPCを見比べながら台帳へ手入力していました。</p>
-          </div>
-          <div class="flow-diagram before-flow" aria-label="改善前の流れ図">
-            <div class="flow-step"><span>📷</span><b>数値確認・撮影</b></div>
-            <div class="flow-arrow" aria-hidden="true">→</div>
-            <div class="flow-step"><span>🏷️</span><b>画像名を入力</b></div>
-            <div class="flow-arrow" aria-hidden="true">→</div>
-            <div class="flow-step pain-point"><span>🖥️</span><b>別PCの台帳へ切替</b></div>
-            <div class="flow-arrow" aria-hidden="true">→</div>
-            <div class="flow-step pain-point"><span>🔍</span><b>対象セルを探す</b><small>数千行規模の台帳から確認</small></div>
-            <div class="flow-arrow" aria-hidden="true">→</div>
-            <div class="flow-step pain-point"><span>⌨️</span><b>手入力</b><small>次サンプルで繰り返す</small></div>
-          </div>
-          <div class="burden-grid">
-            <div class="burden-card">1件ごとのPC切替</div>
-            <div class="burden-card">測定値を読み取る時間</div>
-            <div class="burden-card">画像名を入力する時間</div>
-            <div class="burden-card">対象セルを探す時間</div>
-            <div class="burden-card">入力ミスを確認する時間</div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="container">
-          <div class="section-heading compact">
-            <p class="eyebrow">Bottleneck</p>
-            <h2>肝心だったのは、数十件の「正しい入力先」を探すこと</h2>
-            <p class="one-line">大変だったのは測定値を打つことより、数千行規模の台帳から対応するセルを間違えずに探すことでした。</p>
-          </div>
-          <div class="manual-grid">
-            <div class="manual-card">
-              <b>入力元</b>
-              <span>測定・画像撮影PCで確認した数値と、画像名に入れた略号データ</span>
-            </div>
-            <div class="manual-card">
-              <b>入力先</b>
-              <span>事前に破断テスト結果からピックアップされた、数十サンプル分の台帳セル</span>
-            </div>
-            <div class="manual-card">
-              <b>負担</b>
-              <span>1件ごとにPCを切り替え、対象行を探し、数値を入れ、行ズレがないか確認</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="idea" class="section">
-        <div class="container">
-          <div class="section-heading compact">
-            <p class="eyebrow">Idea</p>
-            <h2>工夫：ファイル名を小さなデータにした</h2>
-            <p class="one-line">画像名に略号データを入れ、後からExcelでまとめて読み取れるようにしました。</p>
-          </div>
-          <figure class="filename-map">
-            <figcaption>公開用ダミー例：WF-A_EDGE04_DIR1_7.56um_STATUS-A.jpg</figcaption>
-            <div class="filename-code" aria-label="ファイル名の分解例">
-              <span data-label="ウェハ">WF-A</span>
-              <span data-label="位置">EDGE</span>
-              <span data-label="番号">04</span>
-              <span data-label="方向">DIR1</span>
-              <span data-label="測定値">7.56um</span>
-              <span data-label="状態">STATUS-A</span>
-            </div>
-          </figure>
-        </div>
-      </section>
-
-      <section id="after" class="section section-accent">
-        <div class="container">
-          <div class="section-heading compact">
-            <p class="eyebrow">After</p>
-            <h2>改善後：Excelが正しい行を探す流れへ</h2>
-            <p class="one-line">人が台帳を探す代わりに、画像名から抽出した情報でExcelが照合します。</p>
-          </div>
-          <div class="flow-diagram after-flow" aria-label="改善後の流れ図">
-            <div class="flow-step"><span>📷</span><b>略号入り画像名で保存</b></div>
-            <div class="flow-arrow" aria-hidden="true">→</div>
-            <div class="flow-step"><span>📁</span><b>1フォルダに集約</b></div>
-            <div class="flow-arrow" aria-hidden="true">→</div>
-            <div class="flow-step"><span>📄</span><b>filelist A列へ一覧化</b></div>
-            <div class="flow-arrow" aria-hidden="true">→</div>
-            <div class="flow-step good-point"><span>🧩</span><b>文字位置とIFで分解</b></div>
-            <div class="flow-arrow" aria-hidden="true">→</div>
-            <div class="flow-step good-point"><span>✅</span><b>照合・転記</b></div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="container">
-          <div class="section-heading compact">
-            <p class="eyebrow">Result</p>
-            <h2>何が楽になったか</h2>
-            <p class="one-line">作業の山場が「探す・入力する」から「結果を確認する」へ移りました。</p>
-          </div>
-          <div class="comparison-grid">
-            <article class="compare-card before-card">
-              <h3>Before</h3>
-              <ul>
-                <li>2台のPCを1件ごとに切替</li>
-                <li>数千行規模の台帳から対象セルを探す</li>
-                <li>測定値を手入力</li>
-                <li>行ズレと入力内容を確認</li>
-              </ul>
-            </article>
-            <article class="compare-card after-card">
-              <h3>After</h3>
-              <ul>
-                <li>フォルダ内のファイル名を一覧化</li>
-                <li>画像名から必要情報を抽出</li>
-                <li>複合キーで正しい行へ照合</li>
-                <li>同程度の件数で約45分</li>
-              </ul>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section section-muted">
-        <div class="container">
-          <div class="section-heading compact">
-            <p class="eyebrow">Tools</p>
-            <h2>技術は後ろで支える役割</h2>
-            <p class="one-line">技術名よりも、どの負担を減らすために使ったかを大事にしました。</p>
-          </div>
-          <div class="role-grid">
-            <article class="role-card">
-              <span class="tool-icon" aria-hidden="true">📁</span>
-              <h3>VBA</h3>
-              <p>フォルダ内のファイル名をfilelistシートのA列へ上から順に出す。</p>
-            </article>
-            <article class="role-card">
-              <span class="tool-icon" aria-hidden="true">✂️</span>
-              <h3>Excel関数</h3>
-              <p>文字位置とIF分岐で、画像名から項目を分解する。</p>
-            </article>
-            <article class="role-card">
-              <span class="tool-icon" aria-hidden="true">🔑</span>
-              <h3>複合キー</h3>
-              <p>貼り付け場所変換シートの情報を台帳の正しい行と照合する。</p>
-            </article>
-            <article class="role-card">
-              <span class="tool-icon text-icon" aria-hidden="true">Py</span>
-              <h3>Python</h3>
-              <p>命名ルールや抽出結果の確認を助ける補助。</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="container">
-          <div class="section-heading compact">
-            <p class="eyebrow">Learning</p>
-            <h2>成果と学び</h2>
-            <p class="one-line">自動化だけでなく、ミスが起きにくい流れへ変えました。</p>
-          </div>
-          <div class="learning-strip">
-            <span>作業を分解する</span>
-            <b aria-hidden="true">→</b>
-            <span>間違いやすい場所を見つける</span>
-            <b aria-hidden="true">→</b>
-            <span>仕組みで支える</span>
-          </div>
-        </div>
-      </section>
-
-      <section id="github" class="section section-dark">
-        <div class="container github-grid">
+      <section id="problem" class="section-shell split-section">
+        <div class="section-index amber">01 / THE FRICTION</div>
+        <div class="split-content">
           <div>
-            <p class="eyebrow">GitHub Link</p>
-            <h2>詳細はGitHubへ</h2>
-            <p class="one-line">このLPは入口、READMEとサンプルファイルは公開用に一般化した裏付けです。</p>
+            <h2>入力が重いのではなく、<br>探して確かめることが重かった。</h2>
           </div>
-          <div class="github-actions" aria-label="GitHub関連リンク">
-            <a class="button primary" href="#summary">概要を見る</a>
-            <a class="button secondary dark" href="https://github.com/Tomica-git/portfolio/blob/main/README.md">READMEで仕組みを見る</a>
-            <a class="button ghost dark" href="https://github.com/Tomica-git/portfolio/tree/main/Python%20VBA">GitHubでコードを見る</a>
+          <div class="body-column">
+            <p class="section-label">BEFORE</p>
+            <p>画像を撮影したあと、数十件分の結果を1,000行超の管理台帳へ転記。該当行を探し、入力し、再確認する。1件の行ズレが、全体の手戻りにつながる構造でした。</p>
+            <div class="friction-line"><span>探す</span><b>→</b><span>入力する</span><b>→</b><span>確認する</span><b>↻</b></div>
+            <p class="quiet-note">原因を作業者の注意力に置かず、間違えても気づきにくい流れそのものを見直しました。</p>
           </div>
+        </div>
+      </section>
+
+      <section class="section-shell image-section">
+        <figure class="image-frame">
+          <img src="assets/slides/fracture-07-workflow-before-after.jpg" alt="検査記録の改善前と改善後のワークフロー図">
+          <figcaption>WORKFLOW / BEFORE TO AFTER</figcaption>
+        </figure>
+        <div class="image-note">
+          <p class="kicker amber">THE TURNING POINT</p>
+          <p>後工程で必要な情報は、撮影時点ですでにファイル名に存在していました。ならば、人が読み直して打ち直すのではなく、仕組みに読ませる。</p>
+        </div>
+      </section>
+
+      <section id="system" class="section-shell split-section dark-break">
+        <div class="section-index amber">02 / THE SYSTEM</div>
+        <div class="split-content">
+          <div>
+            <h2>命名規則を、<br>小さな入力APIにする。</h2>
+            <p class="section-subtitle">ファイル名を決まった順番のデータとして設計し、Excel関数とVBAで次の工程へ渡しました。</p>
+          </div>
+          <div class="body-column">
+            <div class="filename-sample">
+              <span>AA-00</span><span>TP</span><span>01</span><span>_X.XXum</span><span>_状態A.jpg</span>
+            </div>
+            <div class="filename-legend">
+              <span><b>AA-00</b> 型番</span>
+              <span><b>TP</b> 位置</span>
+              <span><b>01</b> 番号</span>
+              <span><b>X.XXum</b> 測定値</span>
+              <span><b>状態A</b> 状態</span>
+            </div>
+            <p class="quiet-note">公開用サンプル。実データ・実型番は含めていません。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-shell process-section">
+        <div class="process-heading">
+          <p class="kicker amber">FROM FOLDER TO TABLE</p>
+          <h2>4つの工程に分けて、<br>人の判断を残す。</h2>
+        </div>
+        <ol class="process-list">
+          <li><span class="process-no">01</span><strong>フォルダを選ぶ</strong><p>対象画像の場所を指定</p></li>
+          <li><span class="process-no">02</span><strong>名前を一覧化</strong><p>VBAでファイル名を取得</p></li>
+          <li><span class="process-no">03</span><strong>項目を抽出</strong><p>MID・FIND・IFERROR</p></li>
+          <li><span class="process-no">04</span><strong>台帳へ反映</strong><p>該当行と照合して確認</p></li>
+        </ol>
+      </section>
+
+      <section id="result" class="section-shell result-section">
+        <div class="section-index amber">03 / THE RESULT</div>
+        <div class="result-topline">
+          <div>
+            <p class="kicker amber">TIME REFRAMED</p>
+            <h2>注意力ではなく、<br>仕組みで短くする。</h2>
+          </div>
+          <div class="big-result" aria-label="3から4時間が約45分に短縮">
+            <span>3–4<span class="unit">h</span></span><b>→</b><strong>45<span class="unit">m</span></strong>
+          </div>
+        </div>
+        <div class="result-details">
+          <div><span class="detail-label">破断面観察</span><p>3〜4時間かかっていた記録作業を、約45分へ短縮。</p></div>
+          <div><span class="detail-label">ALカットバリ</span><p>画像ごとの転記を自動抽出し、作業時間を約3分の1へ。</p></div>
+          <div><span class="detail-label">設計の姿勢</span><p>ミスゼロを謳わず、確認しやすく、手戻りしにくい流れを作る。</p></div>
+        </div>
+      </section>
+
+      <section class="section-shell closing-section">
+        <div>
+          <p class="kicker amber">WHAT I BRING</p>
+          <h2>現場の違和感を、<br>再利用できる設計へ。</h2>
+        </div>
+        <div class="closing-copy">
+          <p>業務を観察し、情報の流れを見つけ、限られたツールで使える形へ落とし込む。次はこの経験を、ソフトウェア開発とAI活用による業務改善へ広げていきます。</p>
+          <a class="primary-cta" href="https://github.com/Tomica-git/portfolio">CASE STUDYを読む <span aria-hidden="true">↗</span></a>
         </div>
       </section>
     </main>
 
-    <footer class="site-footer">
-      <p>公開可能な情報とダミーデータをもとにした業務改善ポートフォリオです。</p>
+    <footer class="site-footer section-shell">
+      <span>INSPECTION / DATA</span>
+      <span>EXCEL + VBA / PORTFOLIO</span>
+      <a href="#top">BACK TO TOP ↑</a>
     </footer>
   </body>
 </html>
